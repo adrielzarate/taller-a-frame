@@ -1,0 +1,203 @@
+<html>
+  <head>
+    <title>Mi proyecto con A-Frame!</title>
+    <script src="aframe.min.js"></script>
+  </head>
+  <body>
+    <!--
+    1
+    Agregamos la escena
+    -->
+    <a-scene></a-scene>
+
+    <!--
+    2
+    Agregamos una primiiva, en este caso, una caja
+    -->
+
+<!--     <a-scene>
+        <a-box></a-box>
+    </a-scene> -->
+
+    <!--
+    3
+    Agregamos artibutos a la primitiva, posicion, rotacion, color. Agregamos tambien un cielo con color
+    -->
+<!--     <a-scene>
+
+        <a-box
+            position="-1 0.5 -3"
+            rotation="0 45 0"
+            color="#4CC3D9"
+        ></a-box>
+
+        <a-sky
+            color="#ECECEC"
+        ></a-sky>
+
+    </a-scene> -->
+
+    <!--
+    4
+    Agregamos una primitiva de esfera y atributos. Agregamos tambien una textura de madera a la caja y una de nubes al cielo.
+    -->
+<!--     <a-scene>
+        <a-box position="-1 0.5 -3" rotation="0 45 0" color="#4CC3D9" material="src: pen/imagen/madera.jpg;"></a-box>
+        <a-sky color="#cafefc" material="src: pen/imagen/nubes.png;"></a-sky>
+        <a-sphere
+            position="0 1.25 -5"
+            radius="1.25"
+            color="#EF2D5E"></a-sphere>
+        <a-camera>
+        <a-cursor id="cursor"></a-cursor>
+      </a-camera>
+    </a-scene> -->
+
+    <!--
+    5
+    Eliminamos la caja y el cielo y hacemos la esfera gigante, situandola de manera que la camara quede dentro. Demostramos que estamos dentro saliendo de ella con las flechas
+    -->
+
+<!--     <a-scene>
+        <a-sphere position="0 2 0" radius="5" color="#EF2D5E"></a-sphere>
+        <a-camera>
+        <a-cursor id="cursor"></a-cursor>
+      </a-camera>
+    </a-scene> -->
+
+    <!--
+    6
+    Agregamos una foto 360 a la esfera con el atributo side "double"
+    -->
+<!--     <a-scene>
+        <a-sphere position="0 2 0" radius="5" material="src: pen/imagen/paisaje-360.jpg;" side="double"></a-sphere>
+        <a-camera>
+        <a-cursor id="cursor"></a-cursor>
+      </a-camera>
+    </a-scene> -->
+
+    <!--
+    7
+    Agregamos un plano y al plano le ponemos una imagen de textura
+    -->
+<!--     <a-scene>
+        <a-sphere position="0 2 0" radius="5" material="src: pen/imagen/paisaje-360.jpg;" side="double"></a-sphere>
+        <a-plane
+            position="0 2 -3"
+            rotation="0 0 0"
+            width="1"
+            height="1"
+            material="src: pen/imagen/boton-1.jpg";
+        ></a-plane>
+        <a-camera>
+        <a-cursor id="cursor"></a-cursor>
+      </a-camera>
+    </a-scene> -->
+
+    <!--
+    8
+    Agregamos una animacion al plano de posicion y otra de rotacion, con el atributo side "double". A la camara le agragamos el atributo wasd-controls-enabled en false.
+    -->
+<!--     <a-scene>
+        <a-sphere position="0 2 0" radius="5" material="src: pen/imagen/paisaje-360.jpg;" side="double"></a-sphere>
+        <a-plane position="0 2 -3" rotation="0 0 0" width="1" height="1" material="src: pen/imagen/boton-1.jpg"; side="double">
+            <a-animation
+                attribute="position"
+                dur="1000"
+                to="0 2.2 -3"
+                direction="alternate-reverse"
+                repeat="indefinite"
+            ></a-animation>
+            <a-animation
+                attribute="rotation"
+                dur="1000"
+                to="0 360 0"
+                direction="alternate-reverse"
+                repeat="indefinite"
+            ></a-animation>
+        </a-plane>
+        <a-camera wasd-controls-enabled="false">
+        <a-cursor id="cursor"></a-cursor>
+      </a-camera>
+    </a-scene> -->
+
+    <!--
+    9
+    Removemos la animacion de rotacion y agregamos un script para cambiar la imagen de la esfera
+    -->
+    <!-- <a-scene>
+        <a-sphere position="0 2 0" radius="5" material="src: pen/imagen/paisaje-360.jpg;" side="double"></a-sphere>
+        <a-plane position="0 2 -3" rotation="0 0 0" width="1" height="1" material="src: pen/imagen/boton-1.jpg"; side="double">
+            <a-animation attribute="position" dur="1000" to="0 2.2 -3" direction="alternate-reverse" repeat="indefinite" ></a-animation>
+        </a-plane>
+        <a-camera>
+        <a-cursor id="cursor"></a-cursor>
+      </a-camera>
+    </a-scene>
+    <script>
+        document.querySelector('a-plane').addEventListener('click', function (evt) {
+            document.querySelector('a-sphere').setAttribute("material", "src: pen/imagen/ciudad-360.jpg;");
+        });
+    </script> -->
+
+    <!--
+    10
+    Removemos la animacion del plano. Agregamos un script que va a permitirnos cambiar entre tres imagenes para la esfera, ocultando el plano que usamos de boton y haciendo visible uno nuevo.
+    -->
+<!--     <a-scene>
+
+        <a-sphere position="0 2 0" radius="5" material="src: pen/imagen/paisaje-360.jpg;" side="double"></a-sphere>
+
+        <a-plane id="boton-1" position="0 2 -3" rotation="0 0 0" width="1" height="1" material="src: pen/imagen/boton-1.jpg"; side="double"></a-plane>
+
+        <a-plane id="boton-2" position="2 100 -3" rotation="0 0 0" width="1" height="1" material="src: pen/imagen/boton-2.jpg"; side="double"></a-plane>
+
+        <a-camera wasd-controls-enabled="false">
+        <a-cursor id="cursor"></a-cursor>
+      </a-camera>
+
+    </a-scene>
+    <script>
+        document.querySelector('#boton-1').addEventListener('click', function() {
+            this.setAttribute("position", "0 100 -3");
+            document.querySelector('#boton-2').setAttribute("position", "2 2 -3");
+            document.querySelector('a-sphere').setAttribute("material", "src: pen/imagen/ciudad-360.jpg;");
+        });
+        document.querySelector('#boton-2').addEventListener('click', function() {
+            this.setAttribute("position", "2 100 -3");
+            document.querySelector('a-sphere').setAttribute("material", "src: pen/imagen/cubos-360.jpg;");
+        });
+    </script> -->
+
+    <!--
+    11
+    Dejamos ambos planos en la misma posicion en x para no tener que desplazarnos para presionarlo
+    -->
+<!--     <a-scene>
+
+        <a-sphere position="0 2 0" radius="5" material="src: pen/imagen/paisaje-360.jpg;" side="double"></a-sphere>
+
+        <a-plane id="boton-1" position="0 2 -3" rotation="0 0 0" width="1" height="1" material="src: pen/imagen/boton-1.jpg"; side="double"></a-plane>
+
+        <a-plane id="boton-2" position="0 100 -3" rotation="0 0 0" width="1" height="1" material="src: pen/imagen/boton-2.jpg"; side="double"></a-plane>
+
+        <a-camera wasd-controls-enabled="false">
+            <a-cursor id="cursor"></a-cursor>
+        </a-camera>
+
+    </a-scene>
+    <script>
+        document.querySelector('#boton-1').addEventListener('click', function() {
+            this.setAttribute("position", "0 100 -3");
+            document.querySelector('#boton-2').setAttribute("position", "0 2 -3");
+            document.querySelector('a-sphere').setAttribute("material", "src: pen/imagen/ciudad-360.jpg;");
+        });
+        document.querySelector('#boton-2').addEventListener('click', function() {
+            this.setAttribute("position", "0 100 -3");
+            document.querySelector('a-sphere').setAttribute("material", "src: pen/imagen/cubos-360.jpg;");
+        });
+    </script> -->
+
+
+  </body>
+</html>
